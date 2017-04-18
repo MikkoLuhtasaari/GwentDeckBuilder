@@ -53,14 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 System.out.println("doInBackground");
-                String getResponse = get("https://api.gwentapi.com/v0/cards/SAMJj-MpRum5SvXE6OZQFg");
-                //testCards.add(new TestCard(getResponse));
-                //cards.add(new Card(getResponse));
+                //String getResponse = get("https://api.gwentapi.com/v0/cards/QdjB4mwISJaAT7j5rWhZdA");
+                String getResponse = get("https://api.gwentapi.com/v0/cards?limit=500&offset=0");
                 System.out.println(getResponse);
                 Gson gson = new Gson();
-                TestCard card = gson.fromJson(getResponse, TestCard.class);
-                System.out.println(card);
-                //System.out.println(getResponse);
+                //TestCard card = gson.fromJson(getResponse, TestCard.class);
+                //System.out.println(card);
                 return getResponse;
             } catch (Exception e) {
                 System.out.println("Exception");
