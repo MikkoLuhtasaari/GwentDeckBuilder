@@ -1,9 +1,11 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.google.gson.Gson;
 
@@ -15,7 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class SelectFactionActivity extends AppCompatActivity {
     OkHttpClient client;
     MediaType JSON;
 
@@ -37,14 +39,19 @@ public class MainActivity extends AppCompatActivity {
         factionUrls[4] = "vVL5p_u6SRmotqThkahITA";
         factionUrls[5] = "wkY8HZJATUKd_EtraBoC3A";
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_select_faction);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         client = new OkHttpClient();
         JSON = MediaType.parse("application/json; charset=utf-8");
 
+        GetTask task = new GetTask();
+        task.execute();
+
     }
 
-    public void testHttp(View view) throws IOException {
+    public void openMonsters(View view) throws IOException {
         GetTask task = new GetTask();
         task.execute();
     }
@@ -75,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         }
-
-        /*protected void onPostExecute(String getResponse) {
-            System.out.println(getResponse);
-        }*/
 
         public String get(String url) throws IOException {
             Request request = new Request.Builder()
