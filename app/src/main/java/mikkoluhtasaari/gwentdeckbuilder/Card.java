@@ -82,4 +82,10 @@ public class Card {
         return rarity;
     }
 
+
+    @Override
+    public String toString() {
+        return "Card [flavor="+ flavor+", info="+info+", name="+name+", href="+href+"positions="+positions+"categories="+categories+"" +
+                ",faction="+faction+", group="+group+",rarity="+rarity+"]";
+    }
 }
