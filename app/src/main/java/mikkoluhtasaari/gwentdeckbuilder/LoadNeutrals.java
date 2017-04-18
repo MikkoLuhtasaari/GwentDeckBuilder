@@ -1,13 +1,10 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import com.google.gson.Gson;
 
@@ -49,35 +46,11 @@ public class LoadNeutrals extends AppCompatActivity {
         public GetTask(Context context) {
             this.context = context.getApplicationContext();
         }
-        /*@Override
-        protected Object doInBackground(Object[] params) {
-
-            try {
-                System.out.println("doInBackground");
-                String getResponse = get(neutralUrl);
-                System.out.println(getResponse);
-                Gson gson = new Gson();
-                cardUrls = gson.fromJson(getResponse, ResultSet.class);
-
-                for (int i = 0; i < cardUrls.getResults().size(); i++) {
-                    String temp = get(cardUrls.getResults().get(i).getHref());
-                    neutralCards.add(gson.fromJson(temp, Card.class));
-                    System.out.println("haetaan");
-                }
-                System.out.println("ready");
-                System.out.println(neutralCards.size());
-                return getResponse;
-            } catch (Exception e) {
-                System.out.println(e);
-                this.exception = e;
-                return null;
-            }
-        }*/
 
         @Override
         protected Long doInBackground(URL... params) {
             try {
-                System.out.println("doInBackground");
+                System.out.println("Fetching neutral cards");
                 String getResponse = get(neutralUrl);
                 System.out.println(getResponse);
                 Gson gson = new Gson();
@@ -86,13 +59,8 @@ public class LoadNeutrals extends AppCompatActivity {
                 for (int i = 0; i < cardUrls.getResults().size(); i++) {
                     String temp = get(cardUrls.getResults().get(i).getHref());
                     neutralCards.add(gson.fromJson(temp, Card.class));
-                    System.out.println("haetaan");
                 }
-                System.out.println("ready");
                 System.out.println(neutralCards.size());
-                /*Intent intent = new Intent(getApplicationContext(), SelectFactionActivity.class);
-                intent.putExtra("neutralCards",neutralCards);
-                startActivity(intent);*/
                 return (long)neutralCards.size();
             } catch (Exception e) {
                 System.out.println(e);
@@ -102,13 +70,10 @@ public class LoadNeutrals extends AppCompatActivity {
         }
 
         protected void onPostExecute(Long result) {
-            System.out.println("valmis");
             Intent intent = new Intent(context, SelectFactionActivity.class);
             intent.putExtra("neutralCards",neutralCards);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
-            //context.startActivity(new Intent(context, SelectFactionActivity.class));
-            System.out.println("StartedActivity");
         }
 
         public String get(String url) throws IOException {
