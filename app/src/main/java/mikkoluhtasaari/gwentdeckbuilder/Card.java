@@ -7,18 +7,6 @@ import java.util.List;
  * Class is generated using GSON Format -plugin
  */
 public class Card {
-    /**
-     * categories : [{"href":"https://api.gwentapi.com/v0/categories/LejU5Ge4R3OJRKwfIYd7qQ","name":"Special"}]
-     * faction : {"href":"https://api.gwentapi.com/v0/factions/C21SnrUdSSW7ttfGNkOzeA","name":"Neutral"}
-     * flavor : The beast rushed at them, wildly, with fury in its eyes, immune to pain and any strikes the defenders could land. Nothing stood to stop itâ€¦
-     * group : {"href":"https://api.gwentapi.com/v0/groups/dP0aF_XZQ_mbH3TK-I7Xzg","name":"Bronze"}
-     * href : https://api.gwentapi.com/v0/cards/a0-QORHCQJeH17bRNdiCTA
-     * info : Toggle the Resilience of a non-Gold unit on the battlefield. A Resilient unit stays on the battlefield for the next round.
-     * name : Adrenaline Rush
-     * positions : ["Event"]
-     * uuid : a0-QORHCQJeH17bRNdiCTA
-     * variations : [{"availability":"BaseSet","href":"https://api.gwentapi.com/v0/cards/a0-QORHCQJeH17bRNdiCTA/variations/J0g7_sHISDCUUylBNjF0pQ","rarity":{"href":"https://api.gwentapi.com/v0/rarities/8uacaQa2S3iNKuWL65YgYw","name":"Common"}}]
-     */
 
     private FactionBean faction;
     private String flavor;

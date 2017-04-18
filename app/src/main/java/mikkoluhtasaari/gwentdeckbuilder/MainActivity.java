@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         neutralCards = new ArrayList<>();
         factionUrls[0] = "9aD4AoKlRhqKxQ2b7F0JOA";
         factionUrls[1] = "C21SnrUdSSW7ttfGNkOzeA";
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         factionUrls[3] = "sa1zdVBdST6FqFJUY1vIcQ";
         factionUrls[4] = "vVL5p_u6SRmotqThkahITA";
         factionUrls[5] = "wkY8HZJATUKd_EtraBoC3A";
+
         setContentView(R.layout.activity_main);
 
         client = new OkHttpClient();
