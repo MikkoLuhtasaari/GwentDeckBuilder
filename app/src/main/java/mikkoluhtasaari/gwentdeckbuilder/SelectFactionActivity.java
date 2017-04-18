@@ -30,6 +30,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("onCreate");
 
         neutralCards = new ArrayList<>();
         factionUrls[0] = "9aD4AoKlRhqKxQ2b7F0JOA";
@@ -40,14 +41,24 @@ public class SelectFactionActivity extends AppCompatActivity {
         factionUrls[5] = "wkY8HZJATUKd_EtraBoC3A";
 
         setContentView(R.layout.activity_select_faction);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         client = new OkHttpClient();
         JSON = MediaType.parse("application/json; charset=utf-8");
 
-        GetTask task = new GetTask();
-        task.execute();
+        /*if(getIntent() != null) {
+            neutralCards = (ArrayList<Card>) getIntent().getExtras().get("neutralCards");
+        }*/
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            System.out.println("Extras");
+            neutralCards = (ArrayList<Card>)extras.getSerializable("neutralCards");
+        }
+        System.out.println(neutralCards.size());
+
+        //GetTask task = new GetTask();
+        //task.execute();
 
     }
 

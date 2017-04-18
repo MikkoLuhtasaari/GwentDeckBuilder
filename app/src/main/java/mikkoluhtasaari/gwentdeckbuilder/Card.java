@@ -1,12 +1,13 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by M1k1tus on 15-Apr-17.
  * Class is generated using GSON Format -plugin
  */
-public class Card {
+public class Card implements Serializable {
 
     private FactionBean faction;
     private String flavor;
@@ -99,7 +100,7 @@ public class Card {
         this.variations = variations;
     }
 
-    public static class FactionBean {
+    public static class FactionBean implements Serializable {
         /**
          * href : https://api.gwentapi.com/v0/factions/C21SnrUdSSW7ttfGNkOzeA
          * name : Neutral
@@ -130,7 +131,7 @@ public class Card {
         }
     }
 
-    public static class GroupBean {
+    public static class GroupBean implements Serializable {
         /**
          * href : https://api.gwentapi.com/v0/groups/dP0aF_XZQ_mbH3TK-I7Xzg
          * name : Bronze
@@ -161,7 +162,7 @@ public class Card {
         }
     }
 
-    public static class CategoriesBean {
+    public static class CategoriesBean implements Serializable {
         /**
          * href : https://api.gwentapi.com/v0/categories/LejU5Ge4R3OJRKwfIYd7qQ
          * name : Special
@@ -192,7 +193,7 @@ public class Card {
         }
     }
 
-    public static class VariationsBean {
+    public static class VariationsBean implements Serializable {
         /**
          * availability : BaseSet
          * href : https://api.gwentapi.com/v0/cards/a0-QORHCQJeH17bRNdiCTA/variations/J0g7_sHISDCUUylBNjF0pQ
@@ -232,7 +233,7 @@ public class Card {
             return rarity.toString();
         }
 
-        public static class RarityBean {
+        public static class RarityBean implements Serializable {
             /**
              * href : https://api.gwentapi.com/v0/rarities/8uacaQa2S3iNKuWL65YgYw
              * name : Common
