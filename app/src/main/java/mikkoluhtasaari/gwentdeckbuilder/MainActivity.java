@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import okhttp3.MediaType;
@@ -52,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
                 String getResponse = get("https://api.gwentapi.com/v0/cards/SAMJj-MpRum5SvXE6OZQFg");
                 //testCards.add(new TestCard(getResponse));
                 //cards.add(new Card(getResponse));
-                //System.out.println(getResponse);
                 System.out.println(getResponse);
+                Gson gson = new Gson();
+                TestCard card = gson.fromJson(getResponse, TestCard.class);
+                System.out.println(card);
+                //System.out.println(getResponse);
                 return getResponse;
             } catch (Exception e) {
                 System.out.println("Exception");

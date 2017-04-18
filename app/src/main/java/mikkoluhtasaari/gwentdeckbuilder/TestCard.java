@@ -135,6 +135,11 @@ public class TestCard {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     public static class GroupBean {
@@ -161,6 +166,11 @@ public class TestCard {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 
     public static class CategoriesBean {
@@ -186,6 +196,11 @@ public class TestCard {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
         }
     }
 
@@ -224,6 +239,11 @@ public class TestCard {
             this.rarity = rarity;
         }
 
+        @Override
+        public String toString() {
+            return rarity.toString();
+        }
+
         public static class RarityBean {
             /**
              * href : https://api.gwentapi.com/v0/rarities/8uacaQa2S3iNKuWL65YgYw
@@ -248,6 +268,17 @@ public class TestCard {
             public void setName(String name) {
                 this.name = name;
             }
+
+            @Override
+            public String toString() {
+                return name;
+            }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Card [flavor="+ flavor+", info="+info+", name="+name+", href="+href+"positions="+positions+"categories="+categories+"" +
+                ",faction="+faction+", group="+group+"]";
     }
 }
