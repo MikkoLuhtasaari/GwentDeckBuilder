@@ -6,7 +6,7 @@ import java.util.List;
  * Created by M1k1tus on 15-Apr-17.
  * Class is generated using GSON Format -plugin
  */
-public class TestCard {
+public class Card {
     /**
      * categories : [{"href":"https://api.gwentapi.com/v0/categories/LejU5Ge4R3OJRKwfIYd7qQ","name":"Special"}]
      * faction : {"href":"https://api.gwentapi.com/v0/factions/C21SnrUdSSW7ttfGNkOzeA","name":"Neutral"}

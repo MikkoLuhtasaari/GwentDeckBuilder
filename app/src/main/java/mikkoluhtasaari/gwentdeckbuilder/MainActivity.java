@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String baseUrl = "https://api.gwentapi.com/v0";
     public static final String[] factionUrls = new String[6];
     public static final String offset = "?limit=200&offset=0";
-    ArrayList<TestCard> neutralCards;
+    ArrayList<Card> neutralCards;
     ResultSet cardUrls;
 
     @Override
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < cardUrls.getResults().size(); i++) {
                     String temp = get(cardUrls.getResults().get(i).getHref());
-                    neutralCards.add(gson.fromJson(temp, TestCard.class));
+                    neutralCards.add(gson.fromJson(temp, Card.class));
                     System.out.println("haetaan");
                 }
                 System.out.println("ready");
