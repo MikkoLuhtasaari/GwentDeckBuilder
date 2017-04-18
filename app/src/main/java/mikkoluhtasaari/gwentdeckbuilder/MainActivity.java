@@ -19,11 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String baseUrl = "https://api.gwentapi.com/v0";
     ArrayList<Card> cards;
+    ArrayList<TestCard> testCards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cards = new ArrayList<>();
+        testCards = new ArrayList<>();
         setContentView(R.layout.activity_main);
 
         client = new OkHttpClient();
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
             try {
                 System.out.println("doInBackground");
                 String getResponse = get("https://api.gwentapi.com/v0/cards/SAMJj-MpRum5SvXE6OZQFg");
-
+                //testCards.add(new TestCard(getResponse));
+                //cards.add(new Card(getResponse));
+                //System.out.println(getResponse);
                 System.out.println(getResponse);
                 return getResponse;
             } catch (Exception e) {
