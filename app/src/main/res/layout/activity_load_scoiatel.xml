@@ -7,8 +7,17 @@
     tools:context="mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadScoiatel">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Loading, please wait"
-        android:textSize="32sp"/>
+        android:textSize="32sp"
+        android:id="@+id/loadingScoiatel"
+        android:layout_marginBottom="50dp"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_below="@+id/loadingScoiatel"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
