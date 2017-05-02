@@ -8,6 +8,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadMonsters;
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNilfgaard;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -23,14 +24,19 @@ public class SelectFactionActivity extends AppCompatActivity {
         neutralCards = new ArrayList<>();
         //Monsters
         factionUrls[0] = "9aD4AoKlRhqKxQ2b7F0JOA";
+
         //Neutrals
         factionUrls[1] = "C21SnrUdSSW7ttfGNkOzeA";
+
         //Nilfgaard
         factionUrls[2] = "DuOHJOMpTWSevegxs7xOKQ";
+
         //NR
         factionUrls[3] = "sa1zdVBdST6FqFJUY1vIcQ";
+
         //Scoiatel
         factionUrls[4] = "vVL5p_u6SRmotqThkahITA";
+
         //Skellige
         factionUrls[5] = "wkY8HZJATUKd_EtraBoC3A";
 
@@ -54,7 +60,10 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openNilfgaard(View view) {
-        System.out.println("open Nilf");
+        Intent intent = new Intent(view.getContext(), LoadNilfgaard.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);
     }
 
     public void openNorthernRealms(View view) {
