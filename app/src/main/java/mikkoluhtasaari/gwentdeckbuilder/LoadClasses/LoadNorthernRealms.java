@@ -88,6 +88,7 @@ public class LoadNorthernRealms extends AppCompatActivity {
             intent.putExtra("northernRealmsCards", northernRealmsCards);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            finish();
         }
 
         public String get(String url) throws IOException {
