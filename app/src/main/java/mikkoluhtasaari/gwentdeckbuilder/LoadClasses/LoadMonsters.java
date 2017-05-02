@@ -74,6 +74,7 @@ public class LoadMonsters extends AppCompatActivity {
                     String temp = get(cardUrls.getResults().get(i).getHref());
                     monsterCards.add(gson.fromJson(temp, Card.class));
                 }
+
                 System.out.println(monsterCards.size());
                 return (long)monsterCards.size();
             } catch (Exception e) {

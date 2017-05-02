@@ -76,6 +76,7 @@ public class LoadNeutrals extends AppCompatActivity {
             intent.putExtra("neutralCards",neutralCards);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            finish();
         }
 
         public String get(String url) throws IOException {
