@@ -27,7 +27,9 @@
         <activity android:name=".LoadClasses.LoadMonsters" />
         <activity android:name=".CreateDecks.CreateMonsterDeck" />
         <activity android:name=".LoadClasses.LoadNilfgaard" />
-        <activity android:name=".CreateDecks.CreateNilfgaardDeck"></activity>
+        <activity android:name=".CreateDecks.CreateNilfgaardDeck" />
+        <activity android:name=".LoadClasses.LoadNorthernRealms" />
+        <activity android:name=".CreateDecks.CreateNorthernRealmsDeck"></activity>
     </application>
 
 </manifest>
