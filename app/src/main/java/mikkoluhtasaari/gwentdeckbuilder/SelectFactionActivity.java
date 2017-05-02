@@ -1,10 +1,13 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import java.util.ArrayList;
+
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadMonsters;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -32,20 +35,22 @@ public class SelectFactionActivity extends AppCompatActivity {
         factionUrls[5] = "wkY8HZJATUKd_EtraBoC3A";
 
         setContentView(R.layout.activity_select_faction);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
+            if(extras.getSerializable("neutralCards") != null) {
+                neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
+            }
         }
         System.out.println("Neutrals size "+neutralCards.size());
 
     }
 
     public void openMonsters(View view) {
-        //TODO new loading activity
+        Intent intent = new Intent(view.getContext(), LoadMonsters.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);
     }
 
 }
