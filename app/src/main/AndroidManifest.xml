@@ -31,7 +31,9 @@
         <activity android:name=".LoadClasses.LoadNorthernRealms" />
         <activity android:name=".CreateDecks.CreateNorthernRealmsDeck" />
         <activity android:name=".LoadClasses.LoadScoiatel" />
-        <activity android:name=".CreateDecks.CreateScoiatelDeck"></activity>
+        <activity android:name=".CreateDecks.CreateScoiatelDeck" />
+        <activity android:name=".LoadClasses.LoadSkellige" />
+        <activity android:name=".CreateDecks.CreateSkelligeDeck"></activity>
     </application>
 
 </manifest>

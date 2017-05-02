@@ -11,6 +11,7 @@ import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadMonsters;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNilfgaard;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNorthernRealms;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadScoiatel;
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadSkellige;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -83,7 +84,10 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openSkellige(View view) {
-        System.out.println("open SK");
+        Intent intent = new Intent(view.getContext(), LoadSkellige.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);
     }
 
 }
