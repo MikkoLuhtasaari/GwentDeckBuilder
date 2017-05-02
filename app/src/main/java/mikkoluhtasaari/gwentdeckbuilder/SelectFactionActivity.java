@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadMonsters;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNilfgaard;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNorthernRealms;
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadScoiatel;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -75,7 +76,10 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openScoiatel(View view) {
-        System.out.println("open ST");
+        Intent intent = new Intent(view.getContext(), LoadScoiatel.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);
     }
 
     public void openSkellige(View view) {
