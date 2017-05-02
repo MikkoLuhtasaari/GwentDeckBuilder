@@ -60,4 +60,15 @@
         android:layout_below="@+id/buttonScoiatel"
         android:layout_alignRight="@+id/buttonScoiatel"
         android:layout_alignEnd="@+id/buttonScoiatel" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:textSize="24dp"
+        android:onClick="openAbout"
+        android:id="@+id/buttonAbout"
+        android:layout_below="@+id/buttonSkellige"
+        android:layout_alignRight="@+id/buttonSkellige"
+        android:layout_alignEnd="@+id/buttonSkellige" />
 </RelativeLayout>

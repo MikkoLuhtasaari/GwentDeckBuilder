@@ -90,4 +90,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    public void openAbout(View view) {
+        Intent intent = new Intent(view.getContext(), About.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);
+    }
+
 }

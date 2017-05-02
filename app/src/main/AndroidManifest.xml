@@ -33,7 +33,8 @@
         <activity android:name=".LoadClasses.LoadScoiatel" />
         <activity android:name=".CreateDecks.CreateScoiatelDeck" />
         <activity android:name=".LoadClasses.LoadSkellige" />
-        <activity android:name=".CreateDecks.CreateSkelligeDeck"></activity>
+        <activity android:name=".CreateDecks.CreateSkelligeDeck" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>
