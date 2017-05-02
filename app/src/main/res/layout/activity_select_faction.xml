@@ -10,8 +10,54 @@
     tools:context="mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Monsters"
-        android:onClick="openMonsters"/>
+        android:textSize="24dp"
+        android:onClick="openMonsters"
+        android:id="@+id/buttonMonster" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nilfgaard"
+        android:textSize="24dp"
+        android:onClick="openNilfgaard"
+        android:id="@+id/buttonNilfgaard"
+        android:layout_below="@+id/buttonMonster"
+        android:layout_alignRight="@+id/buttonMonster"
+        android:layout_alignEnd="@+id/buttonMonster" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Northern Realms"
+        android:textSize="24dp"
+        android:onClick="openNorthernRealms"
+        android:id="@+id/buttonNorthernRealms"
+        android:layout_below="@+id/buttonNilfgaard"
+        android:layout_alignRight="@+id/buttonNilfgaard"
+        android:layout_alignEnd="@+id/buttonNilfgaard" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scoiatel"
+        android:textSize="24dp"
+        android:onClick="openScoiatel"
+        android:id="@+id/buttonScoiatel"
+        android:layout_below="@+id/buttonNorthernRealms"
+        android:layout_alignRight="@+id/buttonNorthernRealms"
+        android:layout_alignEnd="@+id/buttonNorthernRealms" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skellige"
+        android:textSize="24dp"
+        android:onClick="openSkellige"
+        android:id="@+id/buttonSkellige"
+        android:layout_below="@+id/buttonScoiatel"
+        android:layout_alignRight="@+id/buttonScoiatel"
+        android:layout_alignEnd="@+id/buttonScoiatel" />
 </RelativeLayout>

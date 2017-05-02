@@ -53,4 +53,20 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    public void openNilfgaard(View view) {
+        System.out.println("open Nilf");
+    }
+
+    public void openNorthernRealms(View view) {
+        System.out.println("open NR");
+    }
+
+    public void openScoiatel(View view) {
+        System.out.println("open ST");
+    }
+
+    public void openSkellige(View view) {
+        System.out.println("open SK");
+    }
+
 }
