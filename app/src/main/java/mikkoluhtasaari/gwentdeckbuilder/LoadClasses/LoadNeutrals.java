@@ -1,4 +1,4 @@
-package mikkoluhtasaari.gwentdeckbuilder;
+package mikkoluhtasaari.gwentdeckbuilder.LoadClasses;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import mikkoluhtasaari.gwentdeckbuilder.Card;
+import mikkoluhtasaari.gwentdeckbuilder.R;
+import mikkoluhtasaari.gwentdeckbuilder.ResultSet;
+import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,8 +33,6 @@ public class LoadNeutrals extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_neutrals);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         neutralCards = new ArrayList<>();
 
@@ -74,6 +76,7 @@ public class LoadNeutrals extends AppCompatActivity {
             intent.putExtra("neutralCards",neutralCards);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            finish();
         }
 
         public String get(String url) throws IOException {
