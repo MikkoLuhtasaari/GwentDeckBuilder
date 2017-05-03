@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import mikkoluhtasaari.gwentdeckbuilder.Card;
 import mikkoluhtasaari.gwentdeckbuilder.CreateDecks.CreateDeck;
-import mikkoluhtasaari.gwentdeckbuilder.CreateDecks.CreateMonsterDeck;
 import mikkoluhtasaari.gwentdeckbuilder.R;
 import mikkoluhtasaari.gwentdeckbuilder.ResultSet;
 import okhttp3.MediaType;

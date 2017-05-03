@@ -7,11 +7,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadMonsters;
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNilfgaard;
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNorthernRealms;
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadScoiatel;
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadSkellige;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadTest;
 
 public class SelectFactionActivity extends AppCompatActivity {
