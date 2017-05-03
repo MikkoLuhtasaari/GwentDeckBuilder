@@ -15,8 +15,6 @@ import mikkoluhtasaari.gwentdeckbuilder.CardAdapter;
 import mikkoluhtasaari.gwentdeckbuilder.R;
 import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
 
-import static android.support.v7.recyclerview.R.attr.layoutManager;
-
 public class CreateDeck extends AppCompatActivity {
 
     ArrayList<Card> neutralCards;
@@ -49,7 +47,6 @@ public class CreateDeck extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mAdapter = new CardAdapter(avaibleCards);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
