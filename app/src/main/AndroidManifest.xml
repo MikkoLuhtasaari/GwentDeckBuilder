@@ -34,7 +34,9 @@
         <activity android:name=".CreateDecks.CreateScoiatelDeck" />
         <activity android:name=".LoadClasses.LoadSkellige" />
         <activity android:name=".CreateDecks.CreateSkelligeDeck" />
-        <activity android:name=".About"></activity>
+        <activity android:name=".About" />
+        <activity android:name=".LoadClasses.LoadTest" />
+        <activity android:name=".CreateDecks.CreateDeck"></activity>
     </application>
 
 </manifest>

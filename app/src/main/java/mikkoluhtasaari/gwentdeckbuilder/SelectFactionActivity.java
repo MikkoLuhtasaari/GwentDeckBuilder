@@ -12,6 +12,7 @@ import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNilfgaard;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadNorthernRealms;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadScoiatel;
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadSkellige;
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadTest;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -56,36 +57,61 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openMonsters(View view) {
-        Intent intent = new Intent(view.getContext(), LoadMonsters.class);
+        /*Intent intent = new Intent(view.getContext(), LoadMonsters.class);
         intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);*/
+        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("factionUrl", factionUrls[0]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         view.getContext().startActivity(intent);
     }
 
     public void openNilfgaard(View view) {
-        Intent intent = new Intent(view.getContext(), LoadNilfgaard.class);
+        /*Intent intent = new Intent(view.getContext(), LoadNilfgaard.class);
         intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);*/
+        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("factionUrl", factionUrls[2]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         view.getContext().startActivity(intent);
     }
 
     public void openNorthernRealms(View view) {
-        Intent intent = new Intent(view.getContext(), LoadNorthernRealms.class);
+        /*Intent intent = new Intent(view.getContext(), LoadNorthernRealms.class);
         intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);*/
+        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("factionUrl", factionUrls[3]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         view.getContext().startActivity(intent);
     }
 
     public void openScoiatel(View view) {
-        Intent intent = new Intent(view.getContext(), LoadScoiatel.class);
+        /*Intent intent = new Intent(view.getContext(), LoadScoiatel.class);
         intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);*/
+        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("factionUrl", factionUrls[4]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         view.getContext().startActivity(intent);
     }
 
     public void openSkellige(View view) {
-        Intent intent = new Intent(view.getContext(), LoadSkellige.class);
+        /*Intent intent = new Intent(view.getContext(), LoadSkellige.class);
         intent.putExtra("neutralCards",neutralCards);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        view.getContext().startActivity(intent);*/
+        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("factionUrl", factionUrls[5]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         view.getContext().startActivity(intent);
     }
