@@ -7,7 +7,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadTest;
+import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadOther;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openMonsters(View view) {
-        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[0]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -58,7 +58,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openNilfgaard(View view) {
-        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[2]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -66,7 +66,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openNorthernRealms(View view) {
-        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[3]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -74,7 +74,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openScoiatel(View view) {
-        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[4]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -82,7 +82,7 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openSkellige(View view) {
-        Intent intent = new Intent(view.getContext(), LoadTest.class);
+        Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[5]);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

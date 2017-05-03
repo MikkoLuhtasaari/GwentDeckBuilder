@@ -21,7 +21,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class LoadTest extends AppCompatActivity {
+public class LoadOther extends AppCompatActivity {
 
     ArrayList<Card> neutralCards;
     ArrayList<Card> otherCards;
@@ -37,7 +37,7 @@ public class LoadTest extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_load_test);
+        setContentView(R.layout.activity_load_other);
         neutralCards = new ArrayList<>();
         otherCards = new ArrayList<>();
 
