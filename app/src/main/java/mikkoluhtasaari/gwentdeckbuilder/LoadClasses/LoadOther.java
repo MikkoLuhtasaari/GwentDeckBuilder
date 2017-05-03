@@ -69,7 +69,6 @@ public class LoadOther extends AppCompatActivity {
         protected Long doInBackground(URL... params) {
             try {
                 System.out.println("Fetching other cards");
-                System.out.println(baseUrl+factionUrl+offset);
                 String getResponse = get(baseUrl+factionUrl+offset);
                 System.out.println(getResponse);
                 Gson gson = new Gson();
@@ -80,7 +79,6 @@ public class LoadOther extends AppCompatActivity {
                     otherCards.add(gson.fromJson(temp, Card.class));
                 }
 
-                System.out.println(otherCards.size());
                 return (long)otherCards.size();
             } catch (Exception e) {
                 System.out.println(e);

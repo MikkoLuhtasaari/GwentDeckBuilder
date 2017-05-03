@@ -13,25 +13,29 @@ import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
 public class CreateDeck extends AppCompatActivity {
 
     ArrayList<Card> neutralCards;
-    ArrayList<Card> otherCards;
+    ArrayList<Card> avaibleCards;
+    ArrayList<Card> deck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_deck);
+
         neutralCards = new ArrayList<>();
-        otherCards = new ArrayList<>();
+        deck = new ArrayList<>();
+        avaibleCards = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if(extras.getSerializable("neutralCards") != null) {
                 neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
+                avaibleCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
             }
             if(extras.getSerializable("otherCards") != null) {
-                otherCards = (ArrayList<Card>) extras.getSerializable("otherCards");
+                avaibleCards.addAll((ArrayList<Card>) extras.getSerializable("otherCards"));
             }
         }
-        System.out.println("neutral size " + neutralCards.size());
-        System.out.println("other size " +otherCards.size());
+        System.out.println(avaibleCards.size());
     }
     @Override
     public void onBackPressed() {
