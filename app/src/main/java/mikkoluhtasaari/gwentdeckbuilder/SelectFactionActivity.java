@@ -11,9 +11,7 @@ import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadTest;
 
 public class SelectFactionActivity extends AppCompatActivity {
 
-    public static final String baseUrl = "https://api.gwentapi.com/v0";
     public static final String[] factionUrls = new String[6];
-    public static final String offset = "?limit=200&offset=0";
     ArrayList<Card> neutralCards;
 
     @Override
@@ -52,10 +50,6 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openMonsters(View view) {
-        /*Intent intent = new Intent(view.getContext(), LoadMonsters.class);
-        intent.putExtra("neutralCards",neutralCards);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        view.getContext().startActivity(intent);*/
         Intent intent = new Intent(view.getContext(), LoadTest.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[0]);
@@ -64,10 +58,6 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openNilfgaard(View view) {
-        /*Intent intent = new Intent(view.getContext(), LoadNilfgaard.class);
-        intent.putExtra("neutralCards",neutralCards);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        view.getContext().startActivity(intent);*/
         Intent intent = new Intent(view.getContext(), LoadTest.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[2]);
@@ -76,10 +66,6 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openNorthernRealms(View view) {
-        /*Intent intent = new Intent(view.getContext(), LoadNorthernRealms.class);
-        intent.putExtra("neutralCards",neutralCards);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        view.getContext().startActivity(intent);*/
         Intent intent = new Intent(view.getContext(), LoadTest.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[3]);
@@ -88,10 +74,6 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openScoiatel(View view) {
-        /*Intent intent = new Intent(view.getContext(), LoadScoiatel.class);
-        intent.putExtra("neutralCards",neutralCards);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        view.getContext().startActivity(intent);*/
         Intent intent = new Intent(view.getContext(), LoadTest.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[4]);
@@ -100,10 +82,6 @@ public class SelectFactionActivity extends AppCompatActivity {
     }
 
     public void openSkellige(View view) {
-        /*Intent intent = new Intent(view.getContext(), LoadSkellige.class);
-        intent.putExtra("neutralCards",neutralCards);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        view.getContext().startActivity(intent);*/
         Intent intent = new Intent(view.getContext(), LoadTest.class);
         intent.putExtra("neutralCards",neutralCards);
         intent.putExtra("factionUrl", factionUrls[5]);
