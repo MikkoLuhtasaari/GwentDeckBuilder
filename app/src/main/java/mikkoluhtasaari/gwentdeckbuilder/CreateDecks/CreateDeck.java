@@ -1,6 +1,10 @@
 package mikkoluhtasaari.gwentdeckbuilder.CreateDecks;
 
+import android.app.Dialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +12,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -108,7 +114,7 @@ public class CreateDeck extends AppCompatActivity {
         avaibleCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), avaibleCardsView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                addCard(avaibleCards.get(position));
+                addCard(avaibleCards.get(position), view);
             }
 
             @Override
@@ -138,7 +144,7 @@ public class CreateDeck extends AppCompatActivity {
      *
      * @param card Card to be processed
      */
-    private void addCard(Card card) {
+    private void addCard(Card card, View view) {
 
         if (deckCards.size() < maxCards) {
             System.out.println("Under max cards");
@@ -170,7 +176,7 @@ public class CreateDeck extends AppCompatActivity {
                         deckCardsAdapter.notifyDataSetChanged();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Your deck already contains max amount of  gold cards!", Toast.LENGTH_LONG).show();
+                    displayAlert("Your deck already contains 4 gold cards! Please remove one before continuing", view);
                 }
             } else if (card.getGroup().getName().equalsIgnoreCase("silver")) {
                 System.out.println("silver");
@@ -199,7 +205,7 @@ public class CreateDeck extends AppCompatActivity {
                         deckCardsAdapter.notifyDataSetChanged();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Your deck already contains max amount of silver cards!", Toast.LENGTH_LONG).show();
+                    displayAlert("Your deck already contains 6 silver cards! Please remove one before continuing", view);
                 }
             } else {
                 System.out.println("bronze");
@@ -227,7 +233,7 @@ public class CreateDeck extends AppCompatActivity {
                 }
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Your deck already contains max amount of cards!", Toast.LENGTH_LONG).show();
+            displayAlert("Your deck already contains max amount of cards! Please remove one before continuing", view);
         }
     }
 
@@ -263,6 +269,23 @@ public class CreateDeck extends AppCompatActivity {
                 avaibleCardsAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    public void displayAlert(String message, View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setMessage(message);
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     // Return to SelectFactionActivity and send neutralCards with intent
