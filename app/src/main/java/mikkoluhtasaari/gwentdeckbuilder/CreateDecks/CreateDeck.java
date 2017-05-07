@@ -20,8 +20,8 @@ public class CreateDeck extends AppCompatActivity {
     ArrayList<Card> neutralCards;
     ArrayList<Card> avaibleCards;
     ArrayList<Card> deck;
-    private RecyclerView recyclerView;
-    private CardAdapter mAdapter;
+    private RecyclerView avaibleCardsView;
+    private CardAdapter avaibleCardsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class CreateDeck extends AppCompatActivity {
         deck = new ArrayList<>();
         avaibleCards = new ArrayList<>();
 
+        // Find decks from intent extras
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if(extras.getSerializable("neutralCards") != null) {
@@ -44,17 +45,20 @@ public class CreateDeck extends AppCompatActivity {
         }
         System.out.println(avaibleCards.size());
 
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mAdapter = new CardAdapter(avaibleCards);
+        // Create view for avaible cards
+        avaibleCardsView = (RecyclerView) findViewById(R.id.recycler_view);
+        avaibleCardsAdapter = new CardAdapter(avaibleCards);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(mAdapter);
+        avaibleCardsView.setLayoutManager(mLayoutManager);
+        avaibleCardsView.setItemAnimator(new DefaultItemAnimator());
+
+        // Create and add divider to avaibleCardsView
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(avaibleCardsView.getContext(), DividerItemDecoration.VERTICAL);
+        avaibleCardsView.addItemDecoration(dividerItemDecoration);
+        avaibleCardsView.setAdapter(avaibleCardsAdapter);
     }
 
+    // Return to SelectFactionActivity and send neutralCards with intent
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
