@@ -7,12 +7,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import mikkoluhtasaari.gwentdeckbuilder.Card;
 import mikkoluhtasaari.gwentdeckbuilder.CardAdapter;
+import mikkoluhtasaari.gwentdeckbuilder.ClickListener;
 import mikkoluhtasaari.gwentdeckbuilder.R;
+import mikkoluhtasaari.gwentdeckbuilder.RecyclerTouchListener;
 import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
 
 public class CreateDeck extends AppCompatActivity {
@@ -20,6 +24,7 @@ public class CreateDeck extends AppCompatActivity {
     ArrayList<Card> neutralCards;
     ArrayList<Card> avaibleCards;
     ArrayList<Card> deckCards;
+
     private RecyclerView avaibleCardsView;
     private CardAdapter avaibleCardsAdapter;
 
@@ -70,6 +75,38 @@ public class CreateDeck extends AppCompatActivity {
         DividerItemDecoration deckDividerItemDecoration = new DividerItemDecoration(deckCardsView.getContext(), DividerItemDecoration.VERTICAL);
         deckCardsView.addItemDecoration(deckDividerItemDecoration);
         deckCardsView.setAdapter(deckCardsAdapter);
+
+        // Click listener to avaible cards
+        avaibleCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), avaibleCardsView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Card card = avaibleCards.get(position);
+                Toast.makeText(getApplicationContext(), card.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+                deckCards.add(card);
+                deckCardsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+        // Click listener to deck
+        deckCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), deckCardsView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Card card = deckCards.get(position);
+                Toast.makeText(getApplicationContext(), card.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+                deckCards.remove(card);
+                deckCardsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     // Return to SelectFactionActivity and send neutralCards with intent
