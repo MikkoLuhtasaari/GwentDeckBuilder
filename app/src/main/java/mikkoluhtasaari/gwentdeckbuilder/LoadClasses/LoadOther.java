@@ -42,10 +42,13 @@ public class LoadOther extends AppCompatActivity {
         otherCards = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
+
             if(extras.getSerializable("neutralCards") != null) {
                 neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
             }
+
             if(extras.getString("factionUrl") != null) {
                 factionUrl = extras.getString("factionUrl");
             }

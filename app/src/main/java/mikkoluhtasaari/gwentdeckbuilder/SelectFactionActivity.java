@@ -39,6 +39,8 @@ public class SelectFactionActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_select_faction);
 
+        neutralCards.clear();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if(extras.getSerializable("neutralCards") != null) {

@@ -59,17 +59,27 @@ public class CreateDeck extends AppCompatActivity {
 
         // Find decks from intent extras
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
+
             if(extras.getSerializable("neutralCards") != null) {
-                System.out.println("got neutrals");
-                neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
-                avaibleCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
+                ArrayList<Card> temp = new ArrayList<>();
+                temp = (ArrayList<Card>) extras.getSerializable("neutralCards");
+                for(Card card: temp) {
+                    avaibleCards.add(card);
+                    neutralCards.add(card);
+                }
             }
+
             if(extras.getSerializable("otherCards") != null) {
-                avaibleCards.addAll((ArrayList<Card>) extras.getSerializable("otherCards"));
+                System.out.println("neutraalit size " + neutralCards.size());
+                ArrayList<Card> temp = new ArrayList<>();
+                temp = (ArrayList<Card>) extras.getSerializable("otherCards");
+                for(Card card: temp) {
+                    avaibleCards.add(card);
+                }
             }
         }
-        System.out.println(avaibleCards.size());
 
         // Create view for avaible cards
         avaibleCardsView = (RecyclerView) findViewById(R.id.avaibleCards);
@@ -98,7 +108,6 @@ public class CreateDeck extends AppCompatActivity {
         avaibleCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), avaibleCardsView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Card card = avaibleCards.get(position);
                 addCard(avaibleCards.get(position));
             }
 
@@ -112,7 +121,6 @@ public class CreateDeck extends AppCompatActivity {
         deckCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), deckCardsView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Card card = deckCards.get(position);
                 removeCard(deckCards.get(position));
             }
 
@@ -261,6 +269,7 @@ public class CreateDeck extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
+        System.out.println("neutraalit intent size " + neutralCards.size());
         intent.putExtra("neutralCards", neutralCards);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.getApplicationContext().startActivity(intent);
