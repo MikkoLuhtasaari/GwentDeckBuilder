@@ -19,9 +19,12 @@ public class CreateDeck extends AppCompatActivity {
 
     ArrayList<Card> neutralCards;
     ArrayList<Card> avaibleCards;
-    ArrayList<Card> deck;
+    ArrayList<Card> deckCards;
     private RecyclerView avaibleCardsView;
     private CardAdapter avaibleCardsAdapter;
+
+    private RecyclerView deckCardsView;
+    private CardAdapter deckCardsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class CreateDeck extends AppCompatActivity {
         setContentView(R.layout.activity_create_deck);
 
         neutralCards = new ArrayList<>();
-        deck = new ArrayList<>();
+        deckCards = new ArrayList<>();
         avaibleCards = new ArrayList<>();
 
         // Find decks from intent extras
@@ -46,7 +49,7 @@ public class CreateDeck extends AppCompatActivity {
         System.out.println(avaibleCards.size());
 
         // Create view for avaible cards
-        avaibleCardsView = (RecyclerView) findViewById(R.id.recycler_view);
+        avaibleCardsView = (RecyclerView) findViewById(R.id.avaibleCards);
         avaibleCardsAdapter = new CardAdapter(avaibleCards);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         avaibleCardsView.setLayoutManager(mLayoutManager);
@@ -56,6 +59,17 @@ public class CreateDeck extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(avaibleCardsView.getContext(), DividerItemDecoration.VERTICAL);
         avaibleCardsView.addItemDecoration(dividerItemDecoration);
         avaibleCardsView.setAdapter(avaibleCardsAdapter);
+
+        deckCardsView = (RecyclerView) findViewById(R.id.deck);
+        deckCardsAdapter = new CardAdapter(deckCards);
+        RecyclerView.LayoutManager deckLayoutManager = new LinearLayoutManager(getApplicationContext());
+        deckCardsView.setLayoutManager(deckLayoutManager);
+        deckCardsView.setItemAnimator(new DefaultItemAnimator());
+
+        // Create and add divider to avaibleCardsView
+        DividerItemDecoration deckDividerItemDecoration = new DividerItemDecoration(deckCardsView.getContext(), DividerItemDecoration.VERTICAL);
+        deckCardsView.addItemDecoration(deckDividerItemDecoration);
+        deckCardsView.setAdapter(deckCardsAdapter);
     }
 
     // Return to SelectFactionActivity and send neutralCards with intent

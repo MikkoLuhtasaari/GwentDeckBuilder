@@ -6,9 +6,17 @@
     tools:context="mikkoluhtasaari.gwentdeckbuilder.CreateDecks.CreateDeck">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/avaibleCards"
         android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/deck"
+        android:scrollbars="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"/>
 
 </LinearLayout>
