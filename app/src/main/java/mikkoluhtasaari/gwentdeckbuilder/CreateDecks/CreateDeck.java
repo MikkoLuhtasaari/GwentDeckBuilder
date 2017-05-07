@@ -31,6 +31,23 @@ public class CreateDeck extends AppCompatActivity {
     private RecyclerView deckCardsView;
     private CardAdapter deckCardsAdapter;
 
+
+    /**
+     * Gwent has certain restrictions when it comes to deck building.
+     * Deck cannot have more than 40 cards. Silver cards are limited to 6
+     * and gold cards to 4. Deck can have 3 copies of bronze cards but only
+     * one copy of gold and silver cards.
+     * Deck must contain minimum of 25 cards but
+     * since this is going to be a rough prototype that limit isn't going
+     * to be factored in.
+     */
+    private final int maxCards = 40;
+    private final int maxSilvers = 6;
+    private final int maxGolden = 4;
+    private int silvers = 0;
+    private int goldens = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +61,7 @@ public class CreateDeck extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if(extras.getSerializable("neutralCards") != null) {
+                System.out.println("got neutrals");
                 neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
                 avaibleCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
             }
@@ -80,10 +98,8 @@ public class CreateDeck extends AppCompatActivity {
         avaibleCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), avaibleCardsView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Card card = avaibleCards.get(position);
-                Toast.makeText(getApplicationContext(), card.getName() + " is selected!", Toast.LENGTH_SHORT).show();
-                deckCards.add(card);
-                deckCardsAdapter.notifyDataSetChanged();
+                //Card card = avaibleCards.get(position);
+                addCard(avaibleCards.get(position));
             }
 
             @Override
@@ -96,10 +112,8 @@ public class CreateDeck extends AppCompatActivity {
         deckCardsView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), deckCardsView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Card card = deckCards.get(position);
-                Toast.makeText(getApplicationContext(), card.getName() + " is selected!", Toast.LENGTH_SHORT).show();
-                deckCards.remove(card);
-                deckCardsAdapter.notifyDataSetChanged();
+                //Card card = deckCards.get(position);
+                removeCard(deckCards.get(position));
             }
 
             @Override
@@ -109,11 +123,145 @@ public class CreateDeck extends AppCompatActivity {
         }));
     }
 
+    /**
+     * Tries to add the card to users deck.
+     * Checks if the card can be added to deck.
+     * Removes card from avaible cards list if needed
+     *
+     * @param card Card to be processed
+     */
+    private void addCard(Card card) {
+
+        if (deckCards.size() < maxCards) {
+            System.out.println("Under max cards");
+
+            if (card.getGroup().getName().equalsIgnoreCase("gold")) {
+                System.out.println("Gold");
+
+                if (goldens < maxGolden) {
+                    if (deckCards.size() > 0) {
+                        boolean temp = true;
+                        for (Card tempCard : deckCards) {
+                            if (tempCard.getName().equalsIgnoreCase(card.getName())) {
+                                temp = false;
+                            }
+                        }
+
+                        if (temp) {
+                            deckCards.add(card);
+                            avaibleCards.remove(card);
+                            goldens++;
+                            avaibleCardsAdapter.notifyDataSetChanged();
+                            deckCardsAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        deckCards.add(card);
+                        avaibleCards.remove(card);
+                        goldens++;
+                        avaibleCardsAdapter.notifyDataSetChanged();
+                        deckCardsAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Your deck already contains max amount of  gold cards!", Toast.LENGTH_LONG).show();
+                }
+            } else if (card.getGroup().getName().equalsIgnoreCase("silver")) {
+                System.out.println("silver");
+
+                if (silvers < maxSilvers) {
+                    if (deckCards.size() > 0) {
+                        boolean temp = true;
+                        for (Card tempCard : deckCards) {
+                            if (tempCard.getName().equalsIgnoreCase(card.getName())) {
+                                temp = false;
+                            }
+                        }
+
+                        if (temp) {
+                            deckCards.add(card);
+                            avaibleCards.remove(card);
+                            silvers++;
+                            avaibleCardsAdapter.notifyDataSetChanged();
+                            deckCardsAdapter.notifyDataSetChanged();
+                        }
+                    } else {
+                        deckCards.add(card);
+                        avaibleCards.remove(card);
+                        silvers++;
+                        avaibleCardsAdapter.notifyDataSetChanged();
+                        deckCardsAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Your deck already contains max amount of silver cards!", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                System.out.println("bronze");
+
+                if (deckCards.size() > 0) {
+                    int amount = 0;
+                    for (Card tempCard : deckCards) {
+                        if (tempCard.getName().equalsIgnoreCase(card.getName())) {
+                            amount++;
+                        }
+                    }
+
+                    if (amount < 3) {
+                        deckCards.add(card);
+                        deckCardsAdapter.notifyDataSetChanged();
+
+                        if(amount == 2) {
+                            avaibleCards.remove(card);
+                            avaibleCardsAdapter.notifyDataSetChanged();
+                        }
+                    }
+                } else {
+                    deckCards.add(card);
+                    deckCardsAdapter.notifyDataSetChanged();
+                }
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Your deck already contains max amount of cards!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void removeCard(Card card) {
+
+        if (card.getGroup().getName().equalsIgnoreCase("gold")) {
+            System.out.println("gold");
+            avaibleCards.add(card);
+            deckCards.remove(card);
+            avaibleCardsAdapter.notifyDataSetChanged();
+            deckCardsAdapter.notifyDataSetChanged();
+            goldens--;
+        } else if (card.getGroup().getName().equalsIgnoreCase("silver")) {
+            avaibleCards.add(card);
+            deckCards.remove(card);
+            avaibleCardsAdapter.notifyDataSetChanged();
+            deckCardsAdapter.notifyDataSetChanged();
+            silvers--;
+        } else {
+            deckCards.remove(card);
+            deckCardsAdapter.notifyDataSetChanged();
+
+            boolean temp = true;
+            for(Card tempCard: avaibleCards) {
+
+                if(tempCard.getName().equalsIgnoreCase(card.getName())) {
+                    temp = false;
+                }
+            }
+
+            if (temp) {
+                avaibleCards.add(card);
+                avaibleCardsAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
     // Return to SelectFactionActivity and send neutralCards with intent
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
-        intent.putExtra("neutralCards",neutralCards);
+        intent.putExtra("neutralCards", neutralCards);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.getApplicationContext().startActivity(intent);
     }
