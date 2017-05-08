@@ -6,8 +6,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import mikkoluhtasaari.gwentdeckbuilder.CreateDecks.CreateDeck;
-
 /**
  * Created by M1k1tus on 07-May-17.
  */

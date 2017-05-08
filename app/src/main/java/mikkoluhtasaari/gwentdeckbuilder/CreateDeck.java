@@ -1,29 +1,17 @@
-package mikkoluhtasaari.gwentdeckbuilder.CreateDecks;
+package mikkoluhtasaari.gwentdeckbuilder;
 
-import android.app.Dialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import mikkoluhtasaari.gwentdeckbuilder.Card;
-import mikkoluhtasaari.gwentdeckbuilder.CardAdapter;
-import mikkoluhtasaari.gwentdeckbuilder.ClickListener;
-import mikkoluhtasaari.gwentdeckbuilder.R;
-import mikkoluhtasaari.gwentdeckbuilder.RecyclerTouchListener;
-import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
 
 public class CreateDeck extends AppCompatActivity {
 

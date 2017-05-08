@@ -3,8 +3,8 @@ package mikkoluhtasaari.gwentdeckbuilder.LoadClasses;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
@@ -13,9 +13,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import mikkoluhtasaari.gwentdeckbuilder.Card;
-import mikkoluhtasaari.gwentdeckbuilder.CreateDecks.CreateDeck;
+import mikkoluhtasaari.gwentdeckbuilder.CreateDeck;
 import mikkoluhtasaari.gwentdeckbuilder.R;
 import mikkoluhtasaari.gwentdeckbuilder.ResultSet;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

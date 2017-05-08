@@ -3,8 +3,8 @@ package mikkoluhtasaari.gwentdeckbuilder.LoadClasses;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
@@ -16,6 +16,7 @@ import mikkoluhtasaari.gwentdeckbuilder.Card;
 import mikkoluhtasaari.gwentdeckbuilder.R;
 import mikkoluhtasaari.gwentdeckbuilder.ResultSet;
 import mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

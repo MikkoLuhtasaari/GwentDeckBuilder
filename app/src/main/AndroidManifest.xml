@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".About" />
         <activity android:name=".LoadClasses.LoadOther" />
-        <activity android:name=".CreateDecks.CreateDeck"></activity>
+        <activity android:name=".CreateDeck"></activity>
     </application>
 
 </manifest>
