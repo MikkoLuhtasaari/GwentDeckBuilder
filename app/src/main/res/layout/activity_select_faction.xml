@@ -15,7 +15,8 @@
         android:text="Monsters"
         android:textSize="24dp"
         android:onClick="openMonsters"
-        android:id="@+id/buttonMonster" />
+        android:id="@+id/buttonMonster"
+        />
 
     <Button
         android:layout_width="match_parent"

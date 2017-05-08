@@ -119,7 +119,7 @@ public class CreateDeck extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
-
+                displayDetails(avaibleCards.get(position), view);
             }
         }));
 
@@ -132,7 +132,7 @@ public class CreateDeck extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
-
+                displayDetails(deckCards.get(position), view);
             }
         }));
     }
@@ -269,6 +269,35 @@ public class CreateDeck extends AppCompatActivity {
                 avaibleCardsAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    public void displayDetails(Card card, View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: " + card.getName() + "\n\n");
+        sb.append("Info: " + card.getInfo() + "\n\n");
+        sb.append("Positions: ");
+        for(String position: card.getPositions()) {
+            sb.append(position+", ");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1);
+        sb.append("\n\n");
+        sb.append("Group: " + card.getGroup().getName() + "\n\n");
+        sb.append("Flavor: " + card.getFlavor());
+        builder.setMessage(sb.toString());
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void displayAlert(String message, View view) {
