@@ -1,9 +1,5 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
-/**
- * Created by M1k1tus on 03-May-17.
- */
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +8,38 @@ import android.widget.TextView;
 
 import java.util.List;
 
+
+/**
+ * Makes it possible to use recyclerview to display cards.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 03 May 2017
+ * @since 1.0
+ */
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
 
+    /**
+     * Contains cards to be displayed.
+     */
     private List<Card> cards;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView cardName, cardGroup;
 
+        /**
+         * Holds cards name
+         */
+        public TextView cardName;
+
+        /**
+         * Holds cards group
+         */
+        public TextView cardGroup;
+
+        /**
+         * Constructor
+         *
+         * @param view view to be populated
+         */
         public MyViewHolder(View view) {
             super(view);
             cardName = (TextView) view.findViewById(R.id.cardName);
