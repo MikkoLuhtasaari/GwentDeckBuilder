@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,69 +7,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="mikkoluhtasaari.gwentdeckbuilder.SelectFactionActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Monsters"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openMonsters"
         android:id="@+id/buttonMonster"
-        />
+        android:layout_weight="1" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nilfgaard"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openNilfgaard"
         android:id="@+id/buttonNilfgaard"
-        android:layout_below="@+id/buttonMonster"
-        android:layout_alignRight="@+id/buttonMonster"
-        android:layout_alignEnd="@+id/buttonMonster" />
+        android:layout_weight="1" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Northern Realms"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openNorthernRealms"
         android:id="@+id/buttonNorthernRealms"
-        android:layout_below="@+id/buttonNilfgaard"
-        android:layout_alignRight="@+id/buttonNilfgaard"
-        android:layout_alignEnd="@+id/buttonNilfgaard" />
+        android:layout_weight="1"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Scoiatel"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openScoiatel"
         android:id="@+id/buttonScoiatel"
-        android:layout_below="@+id/buttonNorthernRealms"
-        android:layout_alignRight="@+id/buttonNorthernRealms"
-        android:layout_alignEnd="@+id/buttonNorthernRealms" />
+        android:layout_weight="1"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Skellige"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openSkellige"
         android:id="@+id/buttonSkellige"
-        android:layout_below="@+id/buttonScoiatel"
-        android:layout_alignRight="@+id/buttonScoiatel"
-        android:layout_alignEnd="@+id/buttonScoiatel" />
+        android:layout_weight="1"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="About"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:onClick="openAbout"
         android:id="@+id/buttonAbout"
-        android:layout_below="@+id/buttonSkellige"
-        android:layout_alignRight="@+id/buttonSkellige"
-        android:layout_alignEnd="@+id/buttonSkellige" />
-</RelativeLayout>
+        android:layout_weight="1"/>
+</LinearLayout>
