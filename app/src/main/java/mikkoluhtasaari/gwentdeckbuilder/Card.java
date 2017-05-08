@@ -4,20 +4,62 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by M1k1tus on 15-Apr-17.
- * Class is generated using GSON Format -plugin
+ * Card class.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 15 Apr 2017
+ * @since 1.0
  */
 public class Card implements Serializable {
 
+    /**
+     * Contains faction information.
+     */
     private FactionBean faction;
+
+    /**
+     * Contains flavor.
+     */
     private String flavor;
+
+    /**
+     * Contains group.
+     */
     private GroupBean group;
+
+    /**
+     * Contains link.
+     */
     private String href;
+
+    /**
+     * Contains info.
+     */
     private String info;
+
+    /**
+     * Contains name.
+     */
     private String name;
+
+    /**
+     * Contains short part of url.
+     */
     private String uuid;
+
+    /**
+     * Contains categories.
+     */
     private List<CategoriesBean> categories;
+
+    /**
+     * Contains positions.
+     */
     private List<String> positions;
+
+    /**
+     * Contains variations.
+     */
     private List<VariationsBean> variations;
 
     public FactionBean getFaction() {

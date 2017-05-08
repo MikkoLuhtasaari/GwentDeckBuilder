@@ -1,19 +1,38 @@
 package mikkoluhtasaari.gwentdeckbuilder;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.ArrayList;
 
 import mikkoluhtasaari.gwentdeckbuilder.LoadClasses.LoadOther;
 
+/**
+ * Shows "main menu" from which user can select different factions.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 25 Apr 2017
+ * @since 1.0
+ */
 public class SelectFactionActivity extends AppCompatActivity {
 
+    /**
+     * Faction specific url parts.
+     */
     public static final String[] factionUrls = new String[6];
+
+    /**
+     * Contains neutral cards.
+     */
     ArrayList<Card> neutralCards;
 
+    /**
+     * Creates the view.
+     *
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +58,21 @@ public class SelectFactionActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_select_faction);
 
+        neutralCards.clear();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if(extras.getSerializable("neutralCards") != null) {
                 neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
             }
         }
-        System.out.println("Neutrals size "+neutralCards.size());
-
     }
 
+    /**
+     * Opens loader with monster url
+     *
+     * @param view
+     */
     public void openMonsters(View view) {
         Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
@@ -57,6 +81,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    /**
+     * Opens loader with nilgaard url
+     *
+     * @param view
+     */
     public void openNilfgaard(View view) {
         Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
@@ -65,6 +94,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    /**
+     * Opens loader with NR url
+     *
+     * @param view
+     */
     public void openNorthernRealms(View view) {
         Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
@@ -73,6 +107,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    /**
+     * Opens loader with Scoiatel url
+     *
+     * @param view
+     */
     public void openScoiatel(View view) {
         Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
@@ -81,6 +120,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    /**
+     * Opens loader with Skellige url
+     *
+     * @param view
+     */
     public void openSkellige(View view) {
         Intent intent = new Intent(view.getContext(), LoadOther.class);
         intent.putExtra("neutralCards",neutralCards);
@@ -89,6 +133,11 @@ public class SelectFactionActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
+    /**
+     * Opens about activity
+     *
+     * @param view
+     */
     public void openAbout(View view) {
         Intent intent = new Intent(view.getContext(), About.class);
         intent.putExtra("neutralCards",neutralCards);
