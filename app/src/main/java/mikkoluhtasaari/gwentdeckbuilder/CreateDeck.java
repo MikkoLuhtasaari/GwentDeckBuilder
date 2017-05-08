@@ -123,7 +123,6 @@ public class CreateDeck extends AppCompatActivity {
             }
 
             if(extras.getSerializable("otherCards") != null) {
-                System.out.println("neutraalit size " + neutralCards.size());
                 ArrayList<Card> temp = new ArrayList<>();
                 temp = (ArrayList<Card>) extras.getSerializable("otherCards");
                 for(Card card: temp) {
@@ -193,11 +192,9 @@ public class CreateDeck extends AppCompatActivity {
     private void addCard(Card card, View view) {
 
         if (deckCards.size() < maxCards) {
-            System.out.println("Under max cards");
 
             // Case golden card
             if (card.getGroup().getName().equalsIgnoreCase("gold")) {
-                System.out.println("Gold");
 
                 if (goldens < maxGolden) {
                     if (deckCards.size() > 0) {
@@ -226,7 +223,6 @@ public class CreateDeck extends AppCompatActivity {
                     displayAlert("Your deck already contains 4 gold cards! Please remove one before continuing", view);
                 }
             } else if (card.getGroup().getName().equalsIgnoreCase("silver")) {
-                System.out.println("silver");
 
                 if (silvers < maxSilvers) {
                     if (deckCards.size() > 0) {
@@ -255,7 +251,6 @@ public class CreateDeck extends AppCompatActivity {
                     displayAlert("Your deck already contains 6 silver cards! Please remove one before continuing", view);
                 }
             } else {
-                System.out.println("bronze");
 
                 if (deckCards.size() > 0) {
                     int amount = 0;
@@ -293,7 +288,6 @@ public class CreateDeck extends AppCompatActivity {
     private void removeCard(Card card) {
 
         if (card.getGroup().getName().equalsIgnoreCase("gold")) {
-            System.out.println("gold");
             avaibleCards.add(card);
             deckCards.remove(card);
             avaibleCardsAdapter.notifyDataSetChanged();
@@ -392,7 +386,6 @@ public class CreateDeck extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
-        System.out.println("neutraalit intent size " + neutralCards.size());
         intent.putExtra("neutralCards", neutralCards);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.getApplicationContext().startActivity(intent);

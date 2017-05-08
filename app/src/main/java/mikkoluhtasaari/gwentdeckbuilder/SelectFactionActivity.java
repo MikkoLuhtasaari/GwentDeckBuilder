@@ -66,8 +66,6 @@ public class SelectFactionActivity extends AppCompatActivity {
                 neutralCards = (ArrayList<Card>) extras.getSerializable("neutralCards");
             }
         }
-        System.out.println("Neutrals size "+neutralCards.size());
-
     }
 
     /**

@@ -120,9 +120,7 @@ public class LoadOther extends AppCompatActivity {
         @Override
         protected Long doInBackground(URL... params) {
             try {
-                System.out.println("Fetching other cards");
                 String getResponse = get(baseUrl+factionUrl+offset);
-                System.out.println(getResponse);
                 Gson gson = new Gson();
 
                 /**
