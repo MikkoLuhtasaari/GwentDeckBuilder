@@ -6,9 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Shows Copyright related messages and general info about app.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 05 May 2017
+ * @since 1.0
+ */
 public class About extends AppCompatActivity {
 
+    /**
+     * Contains neutral cards which are kept throught the app.
+     */
     ArrayList<Card> neutralCards;
+
+    /**
+     * Creates the view.
+     *
+     * @param savedInstanceState bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +40,10 @@ public class About extends AppCompatActivity {
         }
     }
 
+    /**
+     * Overrides normal back button in order to keep neutral cards in case if activity
+     * is killed by android device
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
