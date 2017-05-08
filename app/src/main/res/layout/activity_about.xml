@@ -11,16 +11,27 @@
         android:text="The textual information and all images presented through this app about GWENT®: The Witcher Card Game is copyrighted by CD Projekt RED"
         android:id="@+id/CDPRDisclaimer"
         android:layout_marginBottom="50dp"
-        android:textSize="24dp"/>
+        android:textSize="24sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="All data is provided by GwentAPI. Visit https://gwentapi.com/about.html for more information"
-        android:textSize="24dp"
+        android:textSize="24sp"
+        android:id="@+id/gwentApi"
+        android:layout_marginBottom="50dp"
         android:autoLink="web"
         android:layout_below="@id/CDPRDisclaimer"
         android:layout_alignRight="@+id/CDPRDisclaimer"
         android:layout_alignEnd="@+id/CDPRDisclaimer"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a crude prototype of what mobile deckbuilder for Gwent® could be like. Development will continue when Gwent® reaches open beta and GwentAPI is updated"
+        android:textSize="24sp"
+        android:layout_below="@id/gwentApi"
+        android:layout_alignRight="@+id/gwentApi"
+        android:layout_alignEnd="@+id/gwentApi" />
 
 </RelativeLayout>
