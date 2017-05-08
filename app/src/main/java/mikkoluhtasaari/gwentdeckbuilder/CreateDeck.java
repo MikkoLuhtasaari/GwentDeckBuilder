@@ -13,16 +13,48 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+/**
+ * User can create decks in this activity. It's no where near finished.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 04 May 2017
+ * @since 1.0
+ */
 public class CreateDeck extends AppCompatActivity {
 
+    /**
+     * Contains neutral cards.
+     */
     ArrayList<Card> neutralCards;
+
+    /**
+     * Contains avaible cards to create deck from.
+     */
     ArrayList<Card> avaibleCards;
+
+    /**
+     * Contains the cards that the user has in deck.
+     */
     ArrayList<Card> deckCards;
 
+    /**
+     * Contains avaible cards.
+     */
     private RecyclerView avaibleCardsView;
+
+    /**
+     * Makes it possible to show avaible cards as recycler list.
+     */
     private CardAdapter avaibleCardsAdapter;
 
+    /**
+     * Contains deck cards.
+     */
     private RecyclerView deckCardsView;
+
+    /**
+     * Makes it possible to show deck cards as recycler list.
+     */
     private CardAdapter deckCardsAdapter;
 
 
@@ -35,13 +67,38 @@ public class CreateDeck extends AppCompatActivity {
      * since this is going to be a rough prototype that limit isn't going
      * to be factored in.
      */
+
+    /**
+     * Max amount of cards for a deck.
+     */
     private final int maxCards = 40;
+
+    /**
+     * Max amount of silver cards for a deck.
+     */
     private final int maxSilvers = 6;
+
+    /**
+     * Max amount of gold cards for a deck.
+     */
     private final int maxGolden = 4;
+
+    /**
+     * How many silver cards user currently has in deck.
+     */
     private int silvers = 0;
+
+    /**
+     * How many gold cards user currently has in deck.
+     */
     private int goldens = 0;
 
 
+    /**
+     * Creates the view
+     *
+     * @param savedInstanceState Bundle savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +108,7 @@ public class CreateDeck extends AppCompatActivity {
         deckCards = new ArrayList<>();
         avaibleCards = new ArrayList<>();
 
-        // Find decks from intent extras
+        // Find cards from intent extras
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
@@ -87,13 +144,14 @@ public class CreateDeck extends AppCompatActivity {
         avaibleCardsView.addItemDecoration(dividerItemDecoration);
         avaibleCardsView.setAdapter(avaibleCardsAdapter);
 
+        // Create view for deck cards
         deckCardsView = (RecyclerView) findViewById(R.id.deck);
         deckCardsAdapter = new CardAdapter(deckCards);
         RecyclerView.LayoutManager deckLayoutManager = new LinearLayoutManager(getApplicationContext());
         deckCardsView.setLayoutManager(deckLayoutManager);
         deckCardsView.setItemAnimator(new DefaultItemAnimator());
 
-        // Create and add divider to avaibleCardsView
+        // Create and add divider to deck cards
         DividerItemDecoration deckDividerItemDecoration = new DividerItemDecoration(deckCardsView.getContext(), DividerItemDecoration.VERTICAL);
         deckCardsView.addItemDecoration(deckDividerItemDecoration);
         deckCardsView.setAdapter(deckCardsAdapter);
@@ -137,6 +195,7 @@ public class CreateDeck extends AppCompatActivity {
         if (deckCards.size() < maxCards) {
             System.out.println("Under max cards");
 
+            // Case golden card
             if (card.getGroup().getName().equalsIgnoreCase("gold")) {
                 System.out.println("Gold");
 
@@ -210,6 +269,7 @@ public class CreateDeck extends AppCompatActivity {
                         deckCards.add(card);
                         deckCardsAdapter.notifyDataSetChanged();
 
+                        // If the deck is going to contain 3 copies of that card remove it from avaible cards
                         if(amount == 2) {
                             avaibleCards.remove(card);
                             avaibleCardsAdapter.notifyDataSetChanged();
@@ -225,6 +285,11 @@ public class CreateDeck extends AppCompatActivity {
         }
     }
 
+    /**
+     * Removes card from users deck and adds it to avaible cards if needed.
+     *
+     * @param card Card to be procecced
+     */
     private void removeCard(Card card) {
 
         if (card.getGroup().getName().equalsIgnoreCase("gold")) {
@@ -241,6 +306,7 @@ public class CreateDeck extends AppCompatActivity {
             deckCardsAdapter.notifyDataSetChanged();
             silvers--;
         } else {
+            // If card is bronze check if it needs to be added to avaible cards.
             deckCards.remove(card);
             deckCardsAdapter.notifyDataSetChanged();
 
@@ -259,8 +325,16 @@ public class CreateDeck extends AppCompatActivity {
         }
     }
 
+    /**
+     * Displays details about card.
+     *
+     * @param card Card to be shown
+     * @param view View to which show details
+     */
     public void displayDetails(Card card, View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+        // Use stringbuilder for better performance.
         StringBuilder sb = new StringBuilder();
         sb.append("Name: " + card.getName() + "\n\n");
         sb.append("Info: " + card.getInfo() + "\n\n");
@@ -288,6 +362,12 @@ public class CreateDeck extends AppCompatActivity {
         alert.show();
     }
 
+    /**
+     * Creates simple dialog with message and one button.
+     *
+     * @param message Message to be shown.
+     * @param view View to which show warning.
+     */
     public void displayAlert(String message, View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setMessage(message);
@@ -305,7 +385,10 @@ public class CreateDeck extends AppCompatActivity {
         alert.show();
     }
 
-    // Return to SelectFactionActivity and send neutralCards with intent
+    /**
+     * Overrides normal back button in order to keep neutral cards in case if activity
+     * is killed by android device
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this.getApplicationContext(), SelectFactionActivity.class);
