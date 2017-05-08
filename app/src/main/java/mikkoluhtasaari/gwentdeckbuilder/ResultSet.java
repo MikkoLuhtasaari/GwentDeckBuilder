@@ -3,12 +3,23 @@ package mikkoluhtasaari.gwentdeckbuilder;
 import java.util.List;
 
 /**
- * Created by M1k1tus on 18-Apr-17.
+ * ResultSet class.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 15 Apr 2017
+ * @since 1.0
  */
 
 public class ResultSet {
 
+    /**
+     * Knows how many results there were.
+     */
     private int count;
+
+    /**
+     * Contains list of results.
+     */
     private List<ResultsBean> results;
 
     public int getCount() {
