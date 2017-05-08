@@ -7,14 +7,32 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by M1k1tus on 07-May-17.
+ * Click listener class for recyclerview.
+ *
+ * @author Mikko Luhtasaari
+ * @version 1.0, 07 May 2017
+ * @since 1.0
  */
 
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
+    /**
+     * Detects gestures
+     */
     private GestureDetector gestureDetector;
+
+    /**
+     * Detects clicks
+     */
     private ClickListener clickListener;
 
+    /**
+     * Basic constructor
+     *
+     * @param context Context for the touch listener
+     * @param recyclerView Recycler view which is to be monitored
+     * @param clickListener Click listener to be bound
+     */
     public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
         this.clickListener = clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
